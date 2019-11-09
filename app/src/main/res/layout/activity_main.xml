@@ -1,0 +1,27 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:text="文本内容" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开始录制" />
+
+<org.instk.demo_1001.CanvasView
+    android:id="@+id/canvasview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+</org.instk.demo_1001.CanvasView>
+
+</LinearLayout>
