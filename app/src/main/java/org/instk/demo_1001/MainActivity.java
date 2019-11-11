@@ -1,6 +1,7 @@
 package org.instk.demo_1001;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -12,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private final float N2S=1000000000f;
 
     //Initial Camera Pos/Att
-    private float[] INIPos={0,0,1f};
+    private float[] INIPos={0,0,0};//位置
     private float[] INIVel={0,0,0};
     private float[] INICbn={1,0,0,0,1,0,0,0,1};
 
@@ -65,9 +67,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     Button startButton;
 
-    List<float[]> storePos ;
+    static  List<float[]> storePos ;
 
     CanvasView canvasView ;
+
+    Button jumpButton ;
+
+    Button calibBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +82,33 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         canvasView=(CanvasView) findViewById( R.id.canvasview);
 
+        calibBtn = (Button) findViewById(R.id.calibBtn);
+
         storePos = new ArrayList<>();
+
+        jumpButton = (Button) findViewById(R.id.jump);
+
+        jumpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this,main.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        calibBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ZFlag=true;
+                CFlag=true;
+
+                storePos.clear();
+
+            }
+        });
 
 
         startButton = (Button) findViewById(R.id.button);
@@ -88,11 +120,40 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                 if(motionEvent.getAction() == MotionEvent.ACTION_DOWN)
                 {
+
                     mode=3;
+
+
+                    //Covariance propagation times
+                    ptProp=etime;	//Implicitly assumes that there were at least one sensor sample before coming to this point
+                    tProp=ptProp+PERPROP;
+
+                    //Clear accumulators
+                    mINS.accum.clear();
+
+                    //Clear Update Flags
+                    ZFlag=false;
+                    CFlag=false;
+
+                    //Reset the covariance
+                    mKalman.initP();
+
+
+
+                    ZFlag = true;
+
+                        //mKalman.applyZupt(mINS, cBAcc, cBGyro);
+
+
+
+                        //mKalman.applyCupt(mINS, cBAcc, cBGyro, INIPos);
+
+
                     return true;
                 }
-                else if(motionEvent.getAction() == MotionEvent.ACTION_UP)
+                else if(motionEvent.getAction() == MotionEvent.ACTION_UP||motionEvent.getAction()==MotionEvent.ACTION_CANCEL)
                 {
+                    Toast.makeText(MainActivity.this,"录制结束",Toast.LENGTH_SHORT).show();
                     mode=0;
                     canvasView.setDataList(storePos);
                     return true;
@@ -177,6 +238,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         if (mode==0) {
             //do nothing
+            mode=0;
+
+            //Reset the pos and velocity (attitude will be set at each update)
+            mINS.set_pos(INIPos);
+            mINS.set_vel(INIVel);
+
+
         }
         else if (mode==3) {	//6Dof Calculations
             if (etype==Sensor.TYPE_ACCELEROMETER) { //Update velocity and Pos
@@ -222,9 +290,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                 //Debug screen
                 etv.setText("Pos :" + mINS.Pos_b.data[0] + "\n" + mINS.Pos_b.data[1] + "\n"+ mINS.Pos_b.data[2] + "\n" +
-                        "Vel :" + mINS.Vel_b.data[0] + "\n" + mINS.Vel_b.data[1] + "\n"+ mINS.Vel_b.data[2]);
-                //etv.setText("Abias :" + cBAcc[0] + "\n" + cBAcc[1] + "\n"+ cBAcc[2] + "\n" +
-                //	    "Gbias :" + cBGyro[0] + "\n" + cBGyro[1] + "\n"+ cBGyro[2]);
+                        "Vel :" + mINS.Vel_b.data[0] + "\n" + mINS.Vel_b.data[1] + "\n"+ mINS.Vel_b.data[2]+"\n"+"Abias :" + cBAcc[0] + "\n" + cBAcc[1] + "\n"+ cBAcc[2] + "\n" +
+                        "Gbias :" + cBGyro[0] + "\n" + cBGyro[1] + "\n"+ cBGyro[2]);
 
                 //flow_control(4);
 

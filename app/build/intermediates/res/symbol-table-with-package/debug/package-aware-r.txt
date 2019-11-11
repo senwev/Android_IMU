@@ -677,6 +677,7 @@ id blocking
 id bottom
 id button
 id buttonPanel
+id calibBtn
 id canvasview
 id center
 id center_horizontal
@@ -716,6 +717,7 @@ id image
 id info
 id invisible
 id italic
+id jump
 id left
 id line1
 id line3

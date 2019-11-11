@@ -45,31 +45,32 @@
 27-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:27:9-41
 28        android:supportsRtl="true"
 28-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:23:9-35
-29        android:theme="@style/Theme.AppCompat" >
-29-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:24:9-47
-30        <activity android:name="org.instk.demo_1001.MainActivity" >
-30-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:30:9-36:20
-30-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:30:19-47
-31            <intent-filter>
-31-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:31:13-35:29
-32                <action android:name="android.intent.action.MAIN" />
-32-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:32:17-69
-32-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:32:25-66
-33
-34                <category android:name="android.intent.category.LAUNCHER" />
-34-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:34:17-77
-34-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:34:27-74
-35            </intent-filter>
-36        </activity>
-37        <activity
-37-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:37:9-42:20
-38            android:name="org.instk.demo_1001.main"
-38-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:38:13-33
-39            android:label="@string/app_name"
-39-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:39:13-45
-40            android:screenOrientation="portrait" >
-40-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:40:13-49
-41        </activity>
-42    </application>
-43
-44</manifest>
+29        android:testOnly="true"
+30        android:theme="@style/Theme.AppCompat.DayNight" >
+30-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:24:9-56
+31        <activity android:name="org.instk.demo_1001.MainActivity" >
+31-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:30:9-36:20
+31-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:30:19-47
+32            <intent-filter>
+32-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:31:13-35:29
+33                <action android:name="android.intent.action.MAIN" />
+33-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:32:17-69
+33-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:32:25-66
+34
+35                <category android:name="android.intent.category.LAUNCHER" />
+35-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:34:17-77
+35-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:34:27-74
+36            </intent-filter>
+37        </activity>
+38        <activity
+38-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:37:9-42:20
+39            android:name="org.instk.demo_1001.main"
+39-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:38:13-33
+40            android:label="@string/app_name"
+40-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:39:13-45
+41            android:screenOrientation="portrait" >
+41-->F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:40:13-49
+42        </activity>
+43    </application>
+44
+45</manifest>

@@ -14,6 +14,7 @@ import org.ejml.ops.CommonOps;
 import org.ejml.ops.NormOps;
 
 import android.hardware.SensorManager;	//Just for the value of gravity
+import android.view.Gravity;
 
 public class INS {
 	public DenseMatrix64F Pos_b=new DenseMatrix64F(3,1);
@@ -44,7 +45,8 @@ public class INS {
 		}
 		
 		//Assume a fixed gravity
-		gravity.set(2,-SensorManager.GRAVITY_EARTH); //Gravity in NED (not ENU) 
+		//gravity.set(2,-SensorManager.GRAVITY_EARTH); //Gravity in NED (not ENU)
+		gravity.set(2,-SensorManager.GRAVITY_EARTH); //Gravity in NED (not ENU)
 	}
 	
 	//Setters and getters
@@ -53,7 +55,8 @@ public class INS {
 			Cbn.set(i,dcm[i]);
 		}
 	}
-	
+
+	//位置
 	public void set_pos(float[] pos) {
 		for (int i=0;i<3;i++)
 			Pos_b.set(i,pos[i]);

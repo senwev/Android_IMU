@@ -89,7 +89,7 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\HUST_PSA\.
 	android:allowBackup
 		ADDED from F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:22:9-35
 	android:theme
-		ADDED from F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:24:9-47
+		ADDED from F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:24:9-56
 activity#org.instk.demo_1001.MainActivity
 ADDED from F:\Workspace\Demo6DoF-master\app\src\main\AndroidManifest.xml:30:9-36:20
 	android:name

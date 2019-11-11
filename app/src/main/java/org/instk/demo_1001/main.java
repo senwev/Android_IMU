@@ -30,7 +30,7 @@ public class main extends Activity implements OnClickListener, SensorEventListen
 	private final float N2S=1000000000f;
 	
 	//Initial Camera Pos/Att
-	private float[] INIPos={0,0,1f};
+	private float[] INIPos={0,0,2f};
 	private float[] INIVel={0,0,0};
 	private float[] INICbn={1,0,0,0,1,0,0,0,1};
 	
@@ -400,14 +400,14 @@ public class main extends Activity implements OnClickListener, SensorEventListen
     		mKalman.initP();
     	}
     	
-    	else if (cmd==4) {	//Zupt
+    	else if (cmd==4) {	//Zupt 静态校准！！！
     		if (mode==3)
     			ZFlag=true;
     		else
     			etv.setText("Zupt can only be applied in 6DoF mode");
     	}
     	
-    	else if (cmd==5) {	//Cupt for the initial Position
+    	else if (cmd==5) {	//Cupt for the initial Position  球块块校准
     		if (mode==3)	
     			CFlag=true;
     		else

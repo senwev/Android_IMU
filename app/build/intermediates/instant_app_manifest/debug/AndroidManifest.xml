@@ -27,7 +27,8 @@
         android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat" >
+        android:testOnly="true"
+        android:theme="@style/Theme.AppCompat.DayNight" >
         <activity android:name="org.instk.demo_1001.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

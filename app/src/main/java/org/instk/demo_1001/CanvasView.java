@@ -47,7 +47,7 @@ public class CanvasView extends View {
 
             for(float[] a : dataList)
             {
-                canvas.drawPoint(500+a[0]*100,500+a[1]*100,paint);
+                canvas.drawPoint(500+a[0]*800,500-a[1]*800,paint);
             }
 
         }
